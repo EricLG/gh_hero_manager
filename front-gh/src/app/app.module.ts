@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { CardsComponent } from './cards/cards.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HeroesComponent
+    HeroesComponent,
+    CardsComponent,
   ],
   imports: [
     NgbModule.forRoot(),
