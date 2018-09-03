@@ -1,10 +1,4 @@
 <div class="">
-    <p>Affichage image</p>
-    <img src="/assets/ability_cards/BR-Cards-000-Back.jpg" alt="BR back"/>
-    <img src="/assets/ability_cards/BR-Cards-001-Trample.jpg" alt="BR back"/>
-
-    <p>Import all cards</p>
-
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
@@ -12,7 +6,8 @@
                 <th class="col">Nom</th>
                 <th class="col">Role</th>
                 <th class="col">Level</th>
-                <th class="col">filename</th>
+                <th class="col">Nom image</th>
+                <th class="col">Image</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +17,8 @@
                 <td>{{card.displayRole()}}</td>
                 <td>{{card.level}}</td>
                 <td>{{card.filename}}</td>
+                <td><img class="resize" src="/assets/ability_cards/{{card.filename}}" alt="BR Trample" width="360" height="504"/></td>
             </tr>
         </tbody>
     </table>
-
 </div>

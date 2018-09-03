@@ -1,0 +1,8 @@
+img.resize {
+    transition: transform .2s; /* Animation */
+}
+
+img.resize:hover {
+    transform: scale(2);
+    z-index: 100;
+}
