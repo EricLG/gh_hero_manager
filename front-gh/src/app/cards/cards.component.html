@@ -19,7 +19,7 @@
             <tr *ngFor="let card of this.cards; let i = index ">
                 <td>{{card.cardnumber}}</td>
                 <td>{{card.name}}</td>
-                <td>{{card.role}}</td>
+                <td>{{card.displayRole()}}</td>
                 <td>{{card.level}}</td>
                 <td>{{card.filename}}</td>
             </tr>

@@ -9,12 +9,10 @@ import { Card } from './../model/card';
 export class CardsComponent implements OnInit {
 
   cards: Card[] = [];
-  roles: String[] = ['Brute', 'Tinkerer', 'Spellweaver', 'Scoundrel', 'Mindthief', 'Cragheart'];
 
   constructor() { }
 
   ngOnInit() {
-    console.log("INIT card component");
     this.getCardsList();
    }
 
@@ -27,8 +25,7 @@ export class CardsComponent implements OnInit {
     const allCards = this.nameCardsFew();
     allCards.forEach(filename => {
       const splitCardInfo = filename.split('-', 5);
-      //console.log(splitCardInfo);
-      this.cards.push( new Card( null, this.manageName(filename), splitCardInfo[1], splitCardInfo[3], splitCardInfo[1], splitCardInfo[0]));
+      this.cards.push( new Card( null, this.manageName(filename), splitCardInfo[1], splitCardInfo[3], filename, splitCardInfo[0]));
     });
 
     return true;
