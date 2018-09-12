@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from './../model/card';
 
+// Services
+import { CardService } from '../services/card.service';
+
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -11,32 +14,38 @@ export class CardsComponent implements OnInit {
 
   cards: Card[] = [];
 
-  constructor() { }
+  constructor(
+    private cardService: CardService
+    ) { }
 
   ngOnInit() {
     this.getCardsList();
    }
 
    getCardsList() {
-    this.importAllCards();
-   }
-
-   importAllCards() {
-    //const allCards = this.nameCards();
+    // const allCards = this.nameCards();
     const allCards = this.nameCardsFew();
     allCards.forEach(filename => {
       const splitCardInfo = filename.split('-', 5);
-      this.cards.push( new Card( null, this.manageName(filename), splitCardInfo[1], splitCardInfo[3], filename, splitCardInfo[0]));
+      const card = new Card( null, this.manageName(filename), splitCardInfo[1], splitCardInfo[3], filename, splitCardInfo[0]);
+      this.cards.push(card);
     });
-
-    return true;
    }
 
-   manageName(filename) {
-     const regexName = /.{15}(.*).jpg/;
-     const rawName = filename.match(regexName)[1];
-     return rawName.replace(/-/g, ' ');
-   }
+  importAllCards() {
+    console.log('Import all cards');
+    this.cards.forEach(card => {
+      this.cardService.saveCard(card).subscribe((result: any): void  =>  {
+        console.log(result);
+      });
+    });
+  }
+
+  manageName(filename) {
+    const regexName = /.{15}(.*).jpg/;
+    const rawName = filename.match(regexName)[1];
+    return rawName.replace(/-/g, ' ');
+  }
 
    nameCardsFew() {
     return [
