@@ -21,12 +21,11 @@ exports.getCards = async function(req, res, next){
     }
 }
 
-exports.getcard = async function(req, res, next){
-
+exports.getCard = async function(req, res, next) {
     var id = req.params.id;
     try {
         var card = await CardService.getCard(id)
-        // Return the card list with the appropriate HTTP Status Code and Message.
+        // Return the card with the appropriate HTTP Status Code and Message.
         return res.status(200).json({status: 200, data: card, message: "Succesfully card Recieved"});
     } catch (e) {
         //Return an Error Response Message with Code and the Error Message.
